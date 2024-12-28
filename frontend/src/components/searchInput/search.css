@@ -1,5 +1,8 @@
 .searchInp{
-    width: 30%;
-    height: 20%;
+    width: 50%;
+    height: 50%;
     border:1px solid black ;
+    outline: none;
+    border-radius: 3px;
+    padding: 1rem;
 }
