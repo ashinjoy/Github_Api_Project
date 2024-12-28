@@ -10,4 +10,4 @@ export const errorHandler = (err:Error,req:Request,res:Response,next:NextFunctio
 
     res.status(500).json({errors:[{message:"Internal Server Error"}]})
 
-}
+}  

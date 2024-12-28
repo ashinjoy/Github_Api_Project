@@ -23,20 +23,20 @@ export const saveUserDetails = async (
       const getGitHubDetails = await fetchGitHubData(uname);
       const userEntity = {
         login: getGitHubDetails.login,
-        avatar_url: getGitHubDetails?.avatar_url ,
-        followers_url: getGitHubDetails?.followers_url ,
-        following_url: getGitHubDetails?.following_url ,
-        repos_url: getGitHubDetails?.repos_url ,
-        name: getGitHubDetails?.name ,
-        company: getGitHubDetails?.company ,
-        blog: getGitHubDetails?.blog ,
-        email: getGitHubDetails?.email ,
-        bio: getGitHubDetails?.bio ,
-        followers: getGitHubDetails?.followers ,
-        following: getGitHubDetails?.following ,
-        public_repos: getGitHubDetails?.public_repos ,
-        public_gists: getGitHubDetails?.public_gists ,
-        location: getGitHubDetails?.location ,
+        avatar_url: getGitHubDetails?.avatar_url,
+        followers_url: getGitHubDetails?.followers_url,
+        following_url: getGitHubDetails?.following_url,
+        repos_url: getGitHubDetails?.repos_url,
+        name: getGitHubDetails?.name,
+        company: getGitHubDetails?.company,
+        blog: getGitHubDetails?.blog,
+        email: getGitHubDetails?.email,
+        bio: getGitHubDetails?.bio,
+        followers: getGitHubDetails?.followers,
+        following: getGitHubDetails?.following,
+        public_repos: getGitHubDetails?.public_repos,
+        public_gists: getGitHubDetails?.public_gists,
+        location: getGitHubDetails?.location,
         created_at: new Date(getGitHubDetails?.created_at),
       };
       getUser = await userModel.create(userEntity);
@@ -65,10 +65,28 @@ export const deleteUser = async (
     if (!uname) {
       throw new BadRequestError("Bad Request! No valid Uname", 400);
     }
-     await userModel.findOneAndUpdate({login:uname},{delete:true});
+    await userModel.findOneAndUpdate({ login: uname }, { delete: true });
     res
       .status(200)
       .json({ success: true, message: "User Deleted Successfully" });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
+export const updateUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+):Promise<void> => {
+  try {
+    const { uname } = req.params as { uname: string };
+    const updates = req.body;
+    if (!uname) {
+      throw new BadRequestError("Bad Request! Provide UserName", 400);
+    }
+   const updateUserByName =  await userModel.findOneAndUpdate({ login: uname }, updates, { new: true });
+    res.status(201).json({success:true,message:"User Profile Updated",userData:updateUserByName})
   } catch (error) {
     console.error(error);
     next(error);
