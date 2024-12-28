@@ -1,5 +1,5 @@
 import Table from '../../components/table/Table'
-import './FollowersList'
+import './FollowersList.css'
 function FollowersList() {
   return (
     <div className='followMain'>

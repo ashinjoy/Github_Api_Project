@@ -1,9 +1,14 @@
+import { useState } from 'react'
 import './search.css'
 
-function SearchInput() {
+function SearchInput({userInp,setUserInp}) {
+    const handleInput = (e)=>{
+        setUserInp(e.target.value)
+    }
+   
   return (
     <>
-    <input className='searchInp' type="text"  />
+    <input className='searchInp' type="text" value={userInp} onChange={handleInput}/>
     </>
   )
 }
