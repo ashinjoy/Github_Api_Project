@@ -1,0 +1,26 @@
+.repolist{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding: 1rem;
+    background-color: #D3D3D3;
+    gap: 0.2rem 1rem;
+}
+.item{
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+    display: flex;
+    width: 50% ;
+    gap: 1rem;
+}
+.item img{
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border: 1px ;
+    border-radius: 50%;
+}
+.itemdesc{
+    display: flex;
+    flex-direction: column;
+}
