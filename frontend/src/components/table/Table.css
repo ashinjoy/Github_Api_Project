@@ -1,0 +1,42 @@
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-table thead {
+    background-color: #f1f1f1;
+  }
+  
+  .user-table th {
+    text-align: left;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .user-table td {
+    padding: 1rem;
+    vertical-align: top;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .user-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+  }
+  
+  .user-table h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    color: #000;
+  }
+  
+  .user-table p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #666;
+  }
