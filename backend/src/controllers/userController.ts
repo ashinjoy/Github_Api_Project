@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { BadRequestError } from "../errors/badRequestError";
 import {
   fetchFollowersList,
+  fetchFollowersRepoDetails,
   fetchFollowingList,
   fetchGitHubData,
   fetchRepoList,
@@ -15,11 +16,11 @@ export const saveUserDetails = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    const { uname } = req.params as {uname:string};
+    const { uname } = req.params as { uname: string };
     if (!uname) {
       throw new BadRequestError("Provide UserName", 400);
     }
-    let getUser = await userModel.findOne({ login:uname });
+    let getUser = await userModel.findOne({ login: uname });
     if (!getUser) {
       const getGitHubDetails = await fetchGitHubData(uname);
       const userEntity = {
@@ -215,15 +216,58 @@ export const mutualFriends = async (
       { $set: { friends: mutualFriends } },
       { new: true }
     );
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "success",
-        mutual_friends: mutualFriends,
-      });
+    res.status(200).json({
+      success: true,
+      message: "success",
+      mutual_friends: mutualFriends,
+    });
   } catch (error) {
     console.error(error);
     next(error);
   }
 };
+
+export const fetchFollowersByName = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { uname } = req.params as { uname: string };
+    if (!uname) {
+      throw new BadRequestError("bad request", 400);
+    }
+    const getUserDetailsByUname = await userModel.findOne({ login: uname });
+    if (!getUserDetailsByUname) {
+      throw new CustomError("No such user", 400);
+    }
+    const getFollowers = await fetchFollowersList(
+      getUserDetailsByUname.followers_url
+    );
+   const followersData =  getFollowers.map((follower:{login:string,avatar_url:string,repos_url:string})=>{
+      return {
+        login:follower.login,
+        avatar_url:follower.avatar_url,
+        repos_url:follower.repos_url
+      }
+    })
+    res.status(200).json({success:true,message:"success",followersData:followersData})
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
+
+export const fetchFollowersRepo = async(req:Request,res:Response,next:NextFunction):Promise<void>=>{
+  try {
+    const {uname} = req.params  as {uname:string}
+    if (!uname) {
+      throw new BadRequestError("bad request", 400);
+    }
+    const getFollowersRepoData = await fetchFollowersRepoDetails(uname)
+    res.status(200).json({success:true,message:"success",followerRepoList:getFollowersRepoData})
+  } catch (error) {
+    console.error(error);
+    next(error)
+  }
+}

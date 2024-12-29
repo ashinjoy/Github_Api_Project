@@ -1,0 +1,43 @@
+.main {
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center ; */
+  }
+  .repolist {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding: 1rem;
+    background-color: #d3d3d3;
+    gap: 1rem;
+  }
+  .item {
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+    display: flex;
+    /* width: 50% ; */
+    align-items: center;
+    gap: 1rem;
+  }
+  .item img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border: 1px;
+    border-radius: 50%;
+  }
+  .itemdesc {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+  }
+  .desc {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  

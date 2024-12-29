@@ -1,4 +1,5 @@
 import "./RepositoryList.css";
+import {Link} from 'react-router-dom'
 function RepositoryList({ repoDetails }) {
   return (
     <>
@@ -14,7 +15,7 @@ function RepositoryList({ repoDetails }) {
                     alt=""
                   />
                   <div className="itemdesc">
-                    <h3>{repoData?.name}</h3>
+                    <Link to={`/repo-detail/${repoData?.name}`}>{repoData?.name}</Link>
                     <p className="desc">{repoData?.description}</p>
                   </div>
                 </div>

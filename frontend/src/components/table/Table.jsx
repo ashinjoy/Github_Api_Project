@@ -1,6 +1,9 @@
 
+import { Link } from 'react-router-dom';
 import './Table.css'
-function Table() {
+function Table({followersList}) {
+  console.log('in table',followersList);
+  
   return (
 <>
 <table className="user-table">
@@ -11,33 +14,21 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        <tr>
+{ followersList && followersList.length > 0 && followersList.map((followers)=>{
+  return (<>
+  <tr>
           <td>
-            <img src="https://via.placeholder.com/50" alt="User 1" className="user-img"/>
+            <img src={followers?.avatar_url} alt="User 1" className="user-img"/>
           </td>
           <td>
-            <h4>John Doe</h4>
+            {/* <h4>{followers?.login}</h4> */}
+            <Link to={`/followers/repo/${followers?.login}`}>{followers?.login}</Link>
             <p>Software Engineer at TechCorp. Passionate about coding and design.</p>
           </td>
         </tr>
-        <tr>
-          <td>
-            <img src="https://via.placeholder.com/50" alt="User 2" className="user-img"/>
-          </td>
-          <td>
-            <h4>Jane Smith</h4>
-            <p>UX Designer with a knack for crafting delightful user experiences.</p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img src="https://via.placeholder.com/50" alt="User 3" className="user-img"/>
-          </td>
-          <td>
-            <h4>Michael Lee</h4>
-            <p>Full-stack Developer specializing in JavaScript frameworks.</p>
-          </td>
-        </tr>
+  </>)
+})       }
+        
       </tbody>
     </table>
 </>

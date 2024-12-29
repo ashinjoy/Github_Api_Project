@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Userinfo.css'
 
 function UserInfo({userData}) {
@@ -7,7 +8,7 @@ function UserInfo({userData}) {
     <h3>{userData?.login}</h3>
     <button className='editbtn'>EditProfile</button>
     <div className='followlist'>
-        <h4>followers</h4>
+        <Link to={`/followers/${userData?.login}`}>followers</Link>
         <h4>following</h4>
     </div>
   </div>

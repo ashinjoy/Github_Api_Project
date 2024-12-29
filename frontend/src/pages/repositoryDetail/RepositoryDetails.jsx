@@ -1,16 +1,37 @@
+import { useParams } from "react-router-dom";
 import "./RepositoryDetail.css";
-function RepositoryDetails() {
-  console.log("ll");
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+function RepositoryDetails({}) {
+  const {repo_name} = useParams()
+  console.log(repo_name);
+  const {repoDetails} = useSelector((state)=>state.user)
+  const [repoData,setRepoData] = useState(null)
+  useEffect(()=>{
+    if(!repoDetails){
+      return
+    }
+   const [repositoryDetails] =  repoDetails.filter((data)=>{
+     return data?.name == repo_name
+    })
+    console.log();
+    
+    setRepoData(repositoryDetails)
+  },[])
+  useEffect(()=>{
+console.log(repoData);
 
+  },[repoData])
+  
   return (
     <>
-     <div className="repo-maindiv">
-  <div className="repo-container">
+ <div className="repo-maindiv">
+  <div className="repo-container">  
     <div className="img-container">
-      <img
-        src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+     {repoData && <img
+        src={repoData?.owner?.avatar_url}
         alt="Repository Logo"
-      />
+      />}
     </div>
     <div className="repo-verification">
       <h3>Verified by GitHub</h3>
@@ -29,7 +50,7 @@ function RepositoryDetails() {
   </div>
   <div className="repo-description">
     <h3>Application</h3>
-    <h1>gitpod.io</h1>
+  { repoData && <h1>{repoData?.name}</h1>}
     <button className="plan-btn">Set up a plan</button>
   </div>
 </div>
