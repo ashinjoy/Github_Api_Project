@@ -28,8 +28,8 @@ const userSchema = new Schema<Iuser>(
   {
     login: {
       type: String,
-      require: true,
-      unique: true,
+      // require: true,
+      // unique: true,
     },
     avatar_url: {
       type: String,
@@ -55,7 +55,7 @@ const userSchema = new Schema<Iuser>(
     },
     email: {
       type: String,
-      unique: true,
+      // unique: true,
     },
     bio: {
       type: String,

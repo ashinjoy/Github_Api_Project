@@ -81,55 +81,56 @@ function UserProfile() {
   return (
     <>
       <div className="userProfile-main">
-        <div className="userprofile">
-          <form className="form" onSubmit={handleSubmit}>
-            <div className="imagewrap">
-              {userData && <img src={userData?.avatar_url} alt="kjkkkj" />}
-              {userData && <h1>userData?.login</h1>}
-            </div>
-            <div className="details">
-              {userDetails && (
-                <input
-                  type="text"
-                  name=""
-                  id="name"
-                  value={userDetails?.name}
-                  onChange={handleChange}
-                />
-              )}
-              <input
-                type="text"
-                name=""
-                id="email"
-                value={userDetails?.email}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name=""
-                id="company"
-                value={userDetails?.company}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name=""
-                id="location"
-                value={userDetails?.location}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name=""
-                id="bio"
-                value={userDetails?.bio}
-                onChange={handleChange}
-              />
-            </div>
-            <button>Edit</button>
-          </form>
-        </div>
+  <div className="userprofile">
+    <form className="form" onSubmit={handleSubmit}>
+      <div className="imagewrap">
+        {userData && <img src={userData?.avatar_url} alt="User Avatar" />}
+        {userData && <h1>{userData?.login}</h1>}
       </div>
+      <div className="details">
+        {userDetails && (
+          <input
+            type="text"
+            placeholder="Name"
+            id="name"
+            value={userDetails?.name}
+            onChange={handleChange}
+          />
+        )}
+        <input
+          type="text"
+          placeholder="Email"
+          id="email"
+          value={userDetails?.email}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Company"
+          id="company"
+          value={userDetails?.company}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Location"
+          id="location"
+          value={userDetails?.location}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Bio"
+          id="bio"
+          value={userDetails?.bio}
+          onChange={handleChange}
+        />
+      </div>
+      <button className="edit-button">Edit</button>
+    </form>
+  </div>
+</div>
+
     </>
   );
 }
