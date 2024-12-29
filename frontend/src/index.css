@@ -3,7 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
-  background-color:darkgray
-  
+body {
+  background-color:#F8F9FA;
+  font-family:"Inter", serif;
+}
+button{
+  background-color: #007BFF;
+  border:1px solid #6C757D;
+  color: #F8F9FA;
+}
+button:hover{
+  cursor: pointer;
+  background-color: #2988ee;
+}
+a{
+  text-decoration: none;
+  color: black;
 }

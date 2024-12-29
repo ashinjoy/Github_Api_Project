@@ -1,4 +1,5 @@
 import './Home.css'
+
 import SearchInput from "../../components/searchInput/SearchInput";
 import RepositoryList from '../../components/repository/repositoryList/RepositoryList';
 import UserInfo from '../../components/userInfo/UserInfo';
@@ -25,7 +26,7 @@ function HomePage() {
         <div className="search">
             <form className="searchform" onSubmit={handleFormSubmission}>
                 <SearchInput userInp={userInp} setUserInp={setUserInp}/>
-                <button>Search</button>
+                <button id='usersearch'>Save User</button>
             </form>
         </div>
         <div className='section'>

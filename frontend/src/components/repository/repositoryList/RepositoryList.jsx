@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom'
 function RepositoryList({ repoDetails }) {
   return (
     <>
+    
+      <div className="repomain" >
+      <h3>Repository List</h3>
       <div className="repolist">
         {repoDetails &&
           repoDetails.length > 0 &&
@@ -22,6 +25,7 @@ function RepositoryList({ repoDetails }) {
               </>
             );
           })}
+      </div>
       </div>
     </>
   );

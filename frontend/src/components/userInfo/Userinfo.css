@@ -9,7 +9,7 @@
     width: 15rem;
     height: 15rem;
     object-fit: cover;
-    border:1px;
+    border:2px solid black;
     border-radius: 50%;
 }
 .editbtn{
@@ -29,3 +29,7 @@
 }
 
 
+.followers{
+    display: flex;
+    gap: .5rem;
+}

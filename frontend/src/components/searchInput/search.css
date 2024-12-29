@@ -5,4 +5,7 @@
     outline: none;
     border-radius: 3px;
     padding: 1rem;
+    font-size: medium;
+    font-weight: 200;
+    letter-spacing: 1px;
 }

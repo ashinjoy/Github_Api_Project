@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   width: 50%;
   padding: 1rem;
-  background-color: #d3d3d3;
+  background-color:#F5F5F5;
   gap: 1rem;
 }
 .item {
@@ -18,8 +18,9 @@
   width: 4rem;
   height: 4rem;
   object-fit: cover;
-  border: 1px;
+  border: 1px solid black;
   border-radius: 50%;
+
 }
 .itemdesc {
   display: flex;
