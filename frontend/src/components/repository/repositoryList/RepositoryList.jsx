@@ -1,18 +1,29 @@
-
-import './RepositoryList.css'
-function RepositoryList() {
-  return <>
-  <div className="repolist">
-    
-    <div className="item">
-        <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" alt="" />
-        <div className="itemdesc">
-        <h3>Cloud 66 Skycap</h3>
-        <p>Skycap is a container native CI/CD tool</p>
-        </div>
-    </div>
-  </div>
-  </>;
+import "./RepositoryList.css";
+function RepositoryList({ repoDetails }) {
+  return (
+    <>
+      <div className="repolist">
+        {repoDetails &&
+          repoDetails.length > 0 &&
+          repoDetails.map((repoData, index) => {
+            return (
+              <>
+                <div className="item" key={index}>
+                  <img
+                    src={repoData?.owner?.avatar_url}
+                    alt=""
+                  />
+                  <div className="itemdesc">
+                    <h3>{repoData?.name}</h3>
+                    <p className="desc">{repoData?.description}</p>
+                  </div>
+                </div>
+              </>
+            );
+          })}
+      </div>
+    </>
+  );
 }
 
 export default RepositoryList;

@@ -1,10 +1,10 @@
 import './Userinfo.css'
 
-function UserInfo() {
+function UserInfo({userData}) {
   return <>
   <div className="userInfo">
-    <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" alt="" />
-    <h3>ashinjoy</h3>
+    <img src={userData?.avatar_url} alt="" />
+    <h3>{userData?.login}</h3>
     <button className='editbtn'>EditProfile</button>
     <div className='followlist'>
         <h4>followers</h4>

@@ -15,11 +15,11 @@ export const saveUserDetails = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    const { uname } = req.params;
+    const { uname } = req.params as {uname:string};
     if (!uname) {
       throw new BadRequestError("Provide UserName", 400);
     }
-    let getUser = await userModel.findOne({ uname });
+    let getUser = await userModel.findOne({ login:uname });
     if (!getUser) {
       const getGitHubDetails = await fetchGitHubData(uname);
       const userEntity = {
