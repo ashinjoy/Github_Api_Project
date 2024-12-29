@@ -1,4 +1,9 @@
 import mongoose, { Document, Schema } from "mongoose";
+export interface IFriend {
+  login: string;
+  repos_url: string;
+  avatar_url: string;
+}
 export interface Iuser extends Document {
   login: string;
   avatar_url: string;
@@ -16,7 +21,8 @@ export interface Iuser extends Document {
   public_gists: number;
   location?: string;
   created_at: Date;
-  delete?:boolean
+  delete?: boolean;
+  friends?: IFriend[] | [];
 }
 const userSchema = new Schema<Iuser>(
   {
@@ -79,6 +85,10 @@ const userSchema = new Schema<Iuser>(
     delete: {
       type: Boolean,
       default: false,
+    },
+    friends: {
+      type: Array,
+      default: [],
     },
   },
   {

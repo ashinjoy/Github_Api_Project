@@ -21,3 +21,23 @@ export const fetchRepoList = async(url:string)=>{
         throw error
     }
 }
+
+export const fetchFollowingList = async(uname:string)=>{
+  try {  
+    const response = await axiosInstance.get(`/users/${uname}/following`)
+    return response.data
+  } catch (error) {
+    console.error(error);
+    throw error
+  }
+}
+
+export const fetchFollowersList = async(url:string)=>{
+  try {
+    const response = await axios.get(url)
+    return response.data
+  } catch (error) {
+    console.error(error);
+    throw error
+  }
+}
